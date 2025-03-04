@@ -1,0 +1,17 @@
+version: '3'
+services:
+  opensearch:
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch
+    environment:
+      - discovery.type=single-node
+      - OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=Fastapi@123  # Set a strong password
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    networks:
+      - opensearch-net
+
+networks:
+  opensearch-net:
